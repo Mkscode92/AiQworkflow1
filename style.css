@@ -59,6 +59,10 @@ header a {
     margin-top: 40px ; 
 }
 
+header a:hover {
+    color: gray;
+}
+
 header .logo a {
     background-image: url(Images/ProjectWhitey.jpg);
     background-size: 200px;
