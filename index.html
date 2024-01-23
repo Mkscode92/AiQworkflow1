@@ -4,12 +4,38 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> page </title>
+
+        <style>
+            body {
+                background-color: rgb(67, 67, 67);
+                font-family: Arial, Helvetica, sans-serif;
+                color: white;
+            }
+        </style>
     </head>
     <body>
-        <h1> Title </h1>
+        <h1 id = "Title"> Title </h1>
         <h2> bruh </h2>
 
         <p> bruh bruh bruh bruh bruh bruhing </p>
-        <button> bruh button </button>
+        <button id = "button" onclick = "functionnn()" > bruh button</button>
     </body>
+    <script>
+        let bool = true; 
+        let functionnn = () => {
+            let title = document.getElementById("Title");
+            
+
+            if (bool) {
+                title.innerHTML = "BUTTON PRESSED";
+                title.style.color = 'red';
+            } else {
+                title.innerHTML = "Title";
+                title.style.color = 'white';
+            }
+
+            bool = !bool;
+            
+        }
+    </script>
 </html>
