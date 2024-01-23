@@ -75,3 +75,8 @@ header .logo a {
     text-indent: -9999px;
      
 }
+
+video {
+    width: 50%;
+    margin-left: 25%;
+}
