@@ -18,15 +18,14 @@ body {
 
 .feature-box.sales div {
     background:gray;
-    background-image: url("Images/Capture.PNG");
     background-repeat: no-repeat;
-    background-size: 100%;
-    height: 500px;
 }
 
 .feature-box.closeouts div {
     background:red;
+    height: 500px;
     padding: 20px;
+    text-align: center;
     
 }
 footer {
