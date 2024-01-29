@@ -1,9 +1,16 @@
 body {
     background-color: rgb(80, 80, 80);
-    height: 100%;
+    margin: 0px;
+
 }
 
-div { 
-    background-color: white;
-    height: 97vh;
+section {
+    text-align: center;
 }
+
+iframe { 
+    background-color: white;
+    height: 98vh;
+    width: 98vw;
+}
+
