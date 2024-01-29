@@ -1,82 +1,9 @@
 body {
-    background: white;
-    color: white;
-    font-family: Helvetica Neue, Helvetica, Arial;
-    padding: 0px;
-    margin: 0px ;
+    background-color: rgb(80, 80, 80);
+    height: 100%;
 }
 
-
-.feature-box {
-    display: flex;
-}
-
-.feature-box div {
-    width: 100%;
-    margin: 1px;
-}
-
-.feature-box.sales div {
-    background:gray;
-    background-repeat: no-repeat;
-}
-
-.feature-box.closeouts div {
-    background:red;
-    height: 500px;
-    padding: 20px;
-    text-align: center;
-    
-}
-footer {
-    background: black;
-    padding: 10px 20px;
-}
-
-ul {
-    margin: 0px;
-    padding: 0px;
-    list-style-type: none;
-}
-
-li {
-    display: inline-block;
-}
-
-header {
-    background: black;
-    height: 100px;
-    padding: 20px;
-    text-align: center;
-}
-
-header a {
-    color: white;
-    text-decoration: none;
-    text-transform: uppercase;
-    margin-top: 40px ; 
-}
-
-header a:hover {
-    color: gray;
-}
-
-header .logo a {
-    background-image: url(Images/ProjectWhitey.jpg);
-    background-size: 200px;
-    display: inline-block;
-    position: relative;
-    top: -40px;
-    height: 120px;
-    width: 200px;
-
-    text-indent: -9999px;
-     
-}
-
-
-
-video {
-    width: 50%;
-    margin-left: 25%;
+div { 
+    background-color: white;
+    height: 97vh;
 }
