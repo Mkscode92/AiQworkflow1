@@ -16,7 +16,7 @@ body {
     
 }
 
-.PlayerBox {
+.MediaBox {
     background-image: linear-gradient(rgb(51, 51, 51),rgb(41, 41, 41));
     border-radius: 1%;
     margin: 0 10% 0% 10%;
@@ -25,25 +25,24 @@ body {
 
 }
 
-.MainPlayer {
+.MainMediaBox {
     float: left;
     width: 70%;
     height: 100%;
     display:flex ;
 }
 
-.MainPlayer iframe {
-    border-radius: 1%;
-    position: absolute;
-    height: 72%;
-    width: 49%;
+.SideMediaBox {
+    width: 28%;
+    height: 100%;
+    float: right;
 }
 
 .SidePlayer {
-    background-color: rgb(29, 29, 29);
-    width: 28%;
-    height: 90%;
-    float: right;
+    background-color: rgb(51, 51, 51);
+    height: 32%;
+    margin: 3%;
+    position: relative;
 }
 
 footer {

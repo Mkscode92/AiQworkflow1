@@ -1,23 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>  
+        <title> page </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> page </title>
+       
+        <script src="https://cdn.jsdelivr.net/npm/@millicast/sdk@latest/dist/millicast.umd.js"></script>
+
         <link rel="stylesheet" href="style.css">
        <p class="Header">
         Title
        </p>
     </head>
     <body>
-        <div class=PlayerBox>
-            <div class="MainPlayer">
-                <h2>
-                    <iframe src="https://viewer.millicast.com?streamId=6d8srH/myStreamName&multisource=true" frameborder="0"></iframe>
-                </h2>
+        <div class=MediaBox>
+            <div class="MainMediaBox">
+                <video width=100% height=100% id="videoPlayer" controls class="vidBox"></video>
+                <script>
+                    let accID = "6d8srH";
+                    let streamName = "myStreamName";
+                    let video = document.getElementById("videoPlayer");
+                    
+                    const options = {
+                        disableVideo: false,
+                        disableAudio: false,
+                        bandwidth: 0,
+                    };
+                    const tokenGenerator = () =>
+                        window.millicast.Director.getSubscriber({
+                            streamName: "myStreamName",
+                            streamAccountId: "6d8srH",
+                        });
+
+                    const millicastView = new window.millicast.View(streamName, tokenGenerator);
+                    
+
+                    millicastView.on("track", (event) => {
+                        addStreamToYourVideoTag(event.streams[0]);
+                    });
+                    
+                    
+                    try {
+                        millicastView.connect(options);
+                    } catch (e) {
+                        millicastView.reconnect();
+                    }
+
+                    function addStreamToYourVideoTag(elem) {
+                        let video = document.getElementById("videoPlayer");
+                        video.srcObject = elem;
+                        video.autoplay = true;
+                    }
+
+                </script>
             </div>
-            <div class="SidePlayer">
-                <h2>SidePlayer</h2>
+            <div class = "SideMediaBox">
+                <div class="SidePlayer"></div>
+                <div class="SidePlayer"></div>
+                <div class="SidePlayer"></div>
             </div>
         </div>
         
