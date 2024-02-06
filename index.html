@@ -5,15 +5,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
        
-        <script src="https://cdn.jsdelivr.net/npm/@millicast/sdk@latest/dist/millicast.umd.js"></script>
-
+        <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
         <link rel="stylesheet" href="style.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/@millicast/sdk@latest/dist/millicast.umd.js"></script>
        <p class="Header">
         Title
        </p>
     </head>
-    <body>
-        <div class=MediaBox>
+    <body> 
+        <div class=MediaBox> 
+            <div id="millicasttitle"> millicast demo</div>
             <div class="MainMediaBox">
                 <video width=100% height=100% id="videoPlayer" controls class="vidBox"></video>
                 <script>
@@ -26,14 +28,17 @@
                         disableAudio: false,
                         bandwidth: 0,
                     };
+
+                    
+
                     const tokenGenerator = () =>
                         window.millicast.Director.getSubscriber({
-                            streamName: "myStreamName",
-                            streamAccountId: "6d8srH",
+                            streamName: streamName,
+                            streamAccountId: accID,
                         });
                         
 
-                    const millicastView = new window.millicast.View(streamName, tokenGenerator);
+                    const millicastView = new window.millicast.View(streamName, tokenGenerator, null, true);
                     
 
                     millicastView.on("track", (event) => {
@@ -60,8 +65,23 @@
                 <div class="SidePlayer"></div>
                 <div class="SidePlayer"></div>
             </div>
-        </div>
+        </div> 
         
+        <div class="MediaBoxHLS">
+            <div id = "HLSdemo">HLS demo</div>
+            <video 
+                class="my-video video-js"
+                controls
+                data-setup="{
+                    
+                }"
+            >
+            <source src="https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.mp4/.m3u8" 
+            type="application/x-mpegURL">
+            </video>
+
+            <script defer src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+        </div>
         <footer>
             footer 
         </footer>

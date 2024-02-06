@@ -25,6 +25,10 @@ body {
 
 }
 
+#millicasttitle {
+    color: white;
+}
+
 .MainMediaBox {
     float: left;
     width: 70%;
@@ -43,6 +47,23 @@ body {
     height: 32%;
     margin: 3%;
     position: relative;
+}
+
+.MediaBoxHLS {
+    background-image: linear-gradient(rgb(51, 51, 51),rgb(41, 41, 41));
+    border-radius: 1%;
+    margin: 1% 10% 0% 10%;
+    height: 50%;
+    padding: 5%;
+}
+
+.my-video {
+    height: 100%;
+    width: 100%;
+}
+
+#HLSdemo {
+    color:white;
 }
 
 footer {
