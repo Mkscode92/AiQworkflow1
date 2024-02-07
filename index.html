@@ -69,7 +69,9 @@
         
         <div class="MediaBoxHLS">
             <div id = "HLSdemo">HLS demo</div>
-            <video controls id = "HlsVideo"></video>
+            <video controls id = "HlsVideo">
+                <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
+            </video>
             <script>
                 var HlsVideo = document.getElementById('HlsVideo');
                 var HlsVideoSrc = 'assets/leo_english_with_cc.m3u8';
