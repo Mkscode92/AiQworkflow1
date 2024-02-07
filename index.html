@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="style.css">
 
         <script src="https://cdn.jsdelivr.net/npm/@millicast/sdk@latest/dist/millicast.umd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
        <p class="Header">
         Title
        </p>
@@ -45,7 +46,6 @@
                         addStreamToYourVideoTag(event.streams[0]);
                     });
                     
-                    
                     try {
                         millicastView.connect(options);
                     } catch (e) {
@@ -69,16 +69,17 @@
         
         <div class="MediaBoxHLS">
             <div id = "HLSdemo">HLS demo</div>
-            <video 
-                class="my-video video-js"
-                controls
-                data-setup="{
-                    
-                }"
-            >
-            <source src="https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.mp4/.m3u8" 
-            type="application/x-mpegURL">
-            </video>
+            <video controls id = "HlsVideo"></video>
+            <script>
+                var HlsVideo = document.getElementById('HlsVideo');
+                var HlsVideoSrc = 'assets/leo_english_with_cc.m3u8';
+
+                if (Hls.isSupported()) {
+                    var hls = new Hls();
+                    hls.loadSource(HlsVideoSrc);
+                    hls.attachMedia(HlsVideo);
+                }     
+            </script>
 
             <script defer src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
         </div>
