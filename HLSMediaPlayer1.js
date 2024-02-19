@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 'airplay', 
                 'fullscreen', 
             ];
+
+            
             defaultOptions.quality = {
                 default: availableQualities[0],
                 options: availableQualities,

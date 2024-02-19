@@ -10,9 +10,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/@millicast/sdk@latest/dist/millicast.umd.js"></script>
         
-       <p class="Header">
-        Title
-       </p>
+       <p class="Header"></p>
     </head>
     <body> 
         <div class=MediaBox> 
@@ -32,9 +30,10 @@
             <div id = "HLSdemo">HLS demo</div>
             <div class = "MainHlsPlayer">
                 <video controls id = "HlsPlayer1">
+                    <script src = "HLSMediaPlayer1.js"></script>
                     <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
                     <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
-                    <script src = "HLSMediaPlayer1.js"></script>
+                   
                 </video>
             </div>
             <div class = "SideHlsBox">
