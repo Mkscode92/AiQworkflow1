@@ -63,10 +63,27 @@ body {
     padding: 5%;
 }
 
-#HlsVideo {
-    width: 100%;
+.MainHlsPlayer {
     height: 100%;
+    width: 70%;
+    float: left;
+    display: flex;
 }
+
+.SideHlsBox{
+    width: 28%;
+    height: 100%;
+    float: right;
+    
+}
+.SideHlsPlayer{
+    background-color: rgb(51, 51, 51);
+    height: 32%;
+    margin: 3%;
+    display: flex;
+}
+
+
 #HLSdemo {
     color:white;
 }

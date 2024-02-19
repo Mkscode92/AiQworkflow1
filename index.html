@@ -25,177 +25,42 @@
                 <div class="SidePlayer" id = "SidePlayer2"></div>
                 <div class="SidePlayer" id = "SidePlayer3"></div>
             </div>
-            <script>
-                let accID = "6d8srH";
-                let streamName = "myStreamName"                   
-                
-
-                const tokenGenerator = () => 
-                    window.millicast.Director.getSubscriber({
-                        streamName: streamName,
-                        streamAccountId: accID
-                    });
-                    
-                const millicastView = new window.millicast.View(streamName, tokenGenerator); // creates millicast which takes in stream name and token
-                
-                const activeSources = new Set();
-                const sourceIdTransceiversMap = new Map();
-
-                millicastView.on("broadcastEvent", (event) => { // listener; turns on whenever a stream is live
-                    
-                    const { name, data } = event;
-
-                    switch (name) {
-                        case "active":
-                            activeSources.add(data.sourceId);
-                            addStreamToYourVideoTag(data.sourceId);
-                            break;
-                        case "inactive":
-                            activeSources.delete(data.sourceId);
-                            RemoveVideo(data.sourceId);
-                            
-                            break;
-                    }
-                    
-                });
-                
-                const addStreamToYourVideoTag = async (sourceId) => { 
-                    const mediaStream = new MediaStream();
-                    const videoTransceiver = await millicastView.addRemoteTrack("video", [mediaStream]);
-                    const audioTransceiver = await millicastView.addRemoteTrack("audio", [mediaStream]);
-
-                    sourceIdTransceiversMap.set(sourceId, {
-                        videoMediaId: videoTransceiver.mid,
-                        audioMediaId: audioTransceiver.mid,
-                    });
-
-                    createVideoElement(mediaStream, sourceId);
-                    
-                    await millicastView.project(sourceId, [
-                        {
-                            trackId: "video",
-                            mediaId: videoTransceiver.mid,
-                            media: "video",
-                        },
-                        {
-                            trackId: "audio",
-                            mediaId: audioTransceiver.mid,
-                            media: "audio",
-                        },
-                    ]);
-
-                    
-                }
-
-                const RemoveVideo = async (sourceId) => {
-                    const video = document.getElementById(sourceId);
-                    const sourceTransceivers = sourceIdTransceiversMap.get(sourceId);
-
-                    sourceIdTransceiversMap.delete(sourceId);
-                    await millicastView.unproject([sourceTransceivers.videoMediaId, sourceTransceivers.audioMediaId]);
-
-                    document.getElementById(sourceId).remove();
-                }
-
-                const createVideoElement = (mediaStream, sourceId) => {
-
-
-                    const MainMediaBox = document.getElementById("MainMediaBox");
-                    const Sp1 = document.getElementById("SidePlayer1"); 
-                    const Sp2 = document.getElementById("SidePlayer2"); 
-                    const Sp3 = document.getElementById("SidePlayer3"); 
-
-                    const video = document.createElement("video");
-            
-                    
-
-                    video.id = sourceId;
-                    video.srcObject = mediaStream;
-                    video.autoplay = true;
-                    
-                    video.style.width = "49%";
-                    video.style.height = "75%";
-
-                    video.style.position = "absolute";
-
-                    if (MainMediaBox.children.length == 1) {
-                        video.controls = true;
-                        MainMediaBox.appendChild(video);
-                    } else if  (Sp1.children.length == 0 ) {
-                        Sp1.appendChild(video);
-                    } else if  (Sp2.children.length == 0 ) {
-                        Sp2.appendChild(video);
-                    } else if  (Sp1.children.length == 0 ) {
-                        Sp3.appendChild(video);
-                    }
-
-                }
-
-                try {
-                    millicastView.connect();
-                } catch (e) {
-                    millicastView.reconnect();
-                }
-                
-            </script>
+            <script src="WebRTCPlayer.js"></script>
         </div> 
         
         <div class="MediaBoxHLS">
             <div id = "HLSdemo">HLS demo</div>
-            <video controls id = "HlsVideo">
-                <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
-                <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
-            </video>
-            <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                    var HlsVideo = document.getElementById('HlsVideo');
-                    var HlsVideoSrc = "assets/Master.m3u8";
-                    const defaultOptions = {};
-
-                    if (Hls.isSupported()) {
-                        var hls = new Hls();
-                        hls.loadSource(HlsVideoSrc);
-                        hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
-                            const availableQualities = hls.levels.map((l) => l.height)
-
-                            defaultOptions.controls = 
-                            [
-                                'play-large', 
-                                'restart', 
-                                'rewind', 
-                                'play', 
-                                'fast-forward', 
-                                'progress',
-                                'current-time', 
-                                'duration', 
-                                'mute', 
-                                'volume', 
-                                'captions', 
-                                'settings', 
-                                'pip', 
-                                'airplay', 
-                                'fullscreen', 
-                            ];
-                            defaultOptions.quality = {
-                                default: availableQualities[0],
-                                options: availableQualities,
-                                forced: true,
-                                onChange: (e) => updateQuality(e)
-                            }
-                            new Plyr(HlsVideo, defaultOptions);
-                        });
-                        hls.attachMedia(HlsVideo);
-                        window.hls = hls;
-                    }
-                    function updateQuality(newQuality) {
-                        window.hls.levels.forEach((level, levelIndex) => {
-                            if(level.height === newQuality){
-                                window.hls.currentLevel = levelIndex
-                            }
-                        })
-                    }
-                })     
-            </script>
+            <div class = "MainHlsPlayer">
+                <video controls id = "HlsPlayer1">
+                    <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
+                    <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
+                    <script src = "HLSMediaPlayer1.js"></script>
+                </video>
+            </div>
+            <div class = "SideHlsBox">
+                <div class="SideHlsPlayer">
+                    <video id = "HlsPlayer2" height="100%" width="100%" >
+                        <script src = "HLSMediaPlayer2.js"></script>
+                        <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
+                        <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
+                    </video>
+                </div>
+                <div class="SideHlsPlayer">
+                    <video id = "HlsPlayer3" height="100%" width="100%" >
+                            <script src = "HLSMediaPlayer3.js"></script>
+                            <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
+                            <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
+                    </video>
+                </div>
+                <div class="SideHlsPlayer">
+                    <video id = "HlsPlayer4" height="100%" width="100%">
+                            <script src = "HLSMediaPlayer4.js"></script>
+                            <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
+                            <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
+                    </video>
+                </div>
+            </div>
+            
 
             <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
             <script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
