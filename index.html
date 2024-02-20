@@ -28,21 +28,14 @@
         
         <div class="MediaBoxHLS">
             <div id = "HLSdemo">HLS demo</div>
-            <div class = "MainHlsPlayer">
-                <video controls id = "HlsPlayer1">
-                    
-                    <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
-                    <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
-                   
-                    
-                </video>
-                <script>
-
-                    document.addEventListener("DOMContentLoaded", () => {
-                        var HlsVideo = document.getElementById('HlsPlayer1');
-
-                        var HlsVideoSrc = "assets/master.m3u8";
-                        const defaultOptions = {};
+            <video controls id = "HlsVideo">
+                <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
+            </video>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    var HlsVideo = document.getElementById('HlsVideo');
+                    var HlsVideoSrc = "assets/Master.m3u8";
+                    const defaultOptions = {};
 
                         if (Hls.isSupported()) {
                             var hls = new Hls();
