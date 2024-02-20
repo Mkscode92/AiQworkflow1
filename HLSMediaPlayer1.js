@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    var HlsVideo = document.getElementById("videofirst");
+    var HlsVideo = document.getElementById("videoa");
     var HlsVideoSrc = "assets/Master.m3u8";
     const defaultOptions = {};
 
