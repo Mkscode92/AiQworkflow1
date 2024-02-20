@@ -30,12 +30,71 @@
             <div id = "HLSdemo">HLS demo</div>
             <div class = "MainHlsPlayer">
                 <video controls id = "HlsPlayer1">
-                    <script src = "HLSMediaPlayer1.js"></script>
+                    
                     <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
                     <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
                    
+                    
                 </video>
+                <script>
+
+                    document.addEventListener("DOMContentLoaded", () => {
+                    var HlsVideo = document.getElementById('HlsPlayer1');
+
+                    var HlsVideoSrc = "assets/master.m3u8";
+                    const defaultOptions = {};
+
+                    if (Hls.isSupported()) {
+                        var hls = new Hls();
+                        hls.loadSource(HlsVideoSrc);
+                        hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
+                            const availableQualities = hls.levels.map((l) => l.height)
+
+                            defaultOptions.controls = 
+                            [
+                                'play-large', 
+                                'restart', 
+                                'rewind', 
+                                'play', 
+                                'fast-forward', 
+                                'progress',
+                                'current-time', 
+                                'duration', 
+                                'mute', 
+                                'volume', 
+                                'captions', 
+                                'settings', 
+                                'pip', 
+                                'airplay', 
+                                'fullscreen', 
+                            ];
+
+                            
+                            defaultOptions.quality = {
+                                default: availableQualities[0],
+                                options: availableQualities,
+                                forced: true,
+                                onChange: (e) => updateQuality(e)
+                            }
+                            
+                            const plyr1 = new Plyr(HlsVideo, defaultOptions);
+                            
+                        });
+                        hls.attachMedia(HlsVideo);
+
+                        window.hls = hls;
+                    }
+                    function updateQuality(newQuality) {
+                        window.hls.levels.forEach((level, levelIndex) => {
+                            if(level.height === newQuality){
+                                window.hls.currentLevel = levelIndex
+                            }
+                        })
+                    }
+                })
+                </script>
             </div>
+            <!--
             <div class = "SideHlsBox">
                 <div class="SideHlsPlayer">
                     <video id = "HlsPlayer2" height="100%" width="100%" >
@@ -59,7 +118,7 @@
                     </video>
                 </div>
             </div>
-            
+            -->
 
             <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
             <script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
