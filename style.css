@@ -15,7 +15,7 @@ body {
 .MediaBox {
     background-image: linear-gradient(rgb(51, 51, 51),rgb(41, 41, 41));
     border-radius: 1%;
-    margin: 2% 10% 0% 10%;
+    margin: 0% 10% 0% 10%;
     height: 70%;
     padding: 5%;
 
@@ -56,7 +56,7 @@ body {
 .MediaBoxHLS {
     background-image: linear-gradient(rgb(51, 51, 51),rgb(41, 41, 41));
     border-radius: 1%;
-    margin: 2% 10% 0% 10%;
+    margin: 0% 10% 0% 10%;
     height: 70%;
     padding: 5%;
 }
