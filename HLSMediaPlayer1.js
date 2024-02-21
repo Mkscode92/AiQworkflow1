@@ -28,12 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 'fullscreen', 
             ];
 
-            
+     
             defaultOptions.quality = {
                 default: availableQualities[0],
                 options: availableQualities,
                 forced: true,
-                onChange: (e) => updateQuality(e)
+                onChange: (e) => {
+                    updateQuality(1080);
+                }
             }
             
             const plyr1 = new Plyr(HlsVideo, defaultOptions);
@@ -44,7 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
         window.hls = hls;
     }
     function updateQuality(newQuality) {
+        
         window.hls.levels.forEach((level, levelIndex) => {
+            
             if(level.height === newQuality){
                 window.hls.currentLevel = levelIndex
             }
