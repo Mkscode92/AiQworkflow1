@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 options: availableQualities,
                 forced: true,
                 onChange: (e) => {
+                    
                     updateQuality(1080);
                 }
             }
@@ -46,9 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
         window.hls = hls;
     }
     function updateQuality(newQuality) {
-        
+        window.alert("hi");
         window.hls.levels.forEach((level, levelIndex) => {
-            window.alert(JSON.stringify(level))
+            
             if(level.height === newQuality){
                 
                 window.hls.currentLevel = levelIndex
