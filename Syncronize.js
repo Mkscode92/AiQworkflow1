@@ -12,6 +12,11 @@ MainVideo.addEventListener("play", function() {
     VideoC.play();
     VideoD.play();
     
+
+    
+    
+    
+
 })
 
 MainVideo.addEventListener("pause", function() {
@@ -26,15 +31,12 @@ MainVideo.addEventListener("timeupdate", async function() {
 
     if (Math.abs(VideoB.currentTime - MT) > 0.1) {
         VideoB.currentTime = MT;
-        VideoB.mute()
     }
     if (Math.abs(VideoC.currentTime - MT) > 0.1) {
         VideoC.currentTime = MT;
-        VideoC.mute()
     }
     if (Math.abs(VideoD.currentTime - MT) > 0.1) {
         VideoD.currentTime = MT;
-        VideoD.mute()
     }
     
 })
