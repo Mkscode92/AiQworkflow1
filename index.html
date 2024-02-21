@@ -28,38 +28,38 @@
         
         <div class="MediaBoxHLS">
             <div id = "HLSdemo">HLS demo</div>
-            <video controls id = "Avideo">
-                <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
-                <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
-                <script src = "HLSMediaPlayer1.js" ></script>
-            </video>
-            
+            <div class = MainHlsBox> 
+                <video controls id = "Avideo">
+                    <script src = "HLSMediaPlayer1.js" ></script>
+                    <script src = "Syncronize.js"></script>
+                    <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
+                    <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
+                </video>
             </div>
-            <!--
             <div class = "SideHlsBox">
                 <div class="SideHlsPlayer">
-                    <video id = "HlsPlayer2" height="100%" width="100%" >
+                   <video id = "Bvideo" height="100%" width="100%" [muted]="'muted'" >
                         <script src = "HLSMediaPlayer2.js"></script>
-                        <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
-                        <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
-                    </video>
+                        <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English"/>
+                        <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese"/>
+                    </video> 
                 </div>
                 <div class="SideHlsPlayer">
-                    <video id = "HlsPlayer3" height="100%" width="100%" >
-                            <script src = "HLSMediaPlayer3.js"></script>
-                            <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
-                            <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
-                    </video>
-                </div>
-                <div class="SideHlsPlayer">
-                    <video id = "HlsPlayer4" height="100%" width="100%">
-                            <script src = "HLSMediaPlayer4.js"></script>
-                            <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
-                            <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
-                    </video>
-                </div>
+                    <video id = "Cvideo" height="100%" width="100%" [muted]="'muted'" >
+                         <script src = "HLSMediaPlayer3.js"></script>
+                         <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese"/>
+                         <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English"/>
+                         
+                     </video> 
+                 </div>
+                 <div class="SideHlsPlayer">
+                    <video id = "Dvideo" height="100%" width="100%" [muted]="'muted'" >
+                         <script src = "HLSMediaPlayer4.js"></script>
+                         <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English"/>
+                         <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese"/>
+                     </video> 
+                 </div>
             </div>
-            -->
 
             <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
             <script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>

@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     var HlsVideo = document.getElementById("Avideo");
+    var HlsVideoB = document.getElementById("BVideo");
     var HlsVideoSrc = "assets/Master.m3u8";
     const defaultOptions = {};
 
@@ -34,7 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 options: availableQualities,
                 forced: true,
                 onChange: (e) => {
+                    updateHls(hls)
                     updateQuality(e);
+
                 }
             }
             
@@ -43,14 +46,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         hls.attachMedia(HlsVideo);
 
-        window.hls = hls;
+        updateHls(hls)
     }
     function updateQuality(newQuality) {
-        
         window.hls.levels.forEach((level, levelIndex) => {
+            
             if(level.height === newQuality){
                 window.hls.currentLevel = levelIndex
             }
         })
+    }
+    function updateHls(hls) {
+        window.hls = hls
     }
 })
