@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let height = level.height.toString();
             window.alert(height.concat(", ", newQuality.toString()))
             if(level.height === newQuality){
-                window.alert(level.height);
+                window.alert(JSON.stringify(level));
                 window.hls.currentLevel = levelIndex
             }
         })
