@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateQuality(newQuality) {
         
         window.hls.levels.forEach((level, levelIndex) => {
-            
             if(level.height === newQuality){
+                window.alert(JSON.stringify(level))
                 window.hls.currentLevel = levelIndex
             }
         })
