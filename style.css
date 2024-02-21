@@ -62,7 +62,7 @@ body {
 }
 
 .MainHlsBox {
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     height: 100%;
     width: 70%;
     float: left;
@@ -82,6 +82,16 @@ body {
     display: flex;
 }
 
+#Audio {
+}
+
+#Avideo::-webkit-media-controls-volume-slider {
+display:none;
+}
+
+#Avideo::-webkit-media-controls-mute-button {
+display:none;
+}
 
 #HLSdemo {
     color:white;

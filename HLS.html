@@ -15,12 +15,13 @@
         <div class="MediaBoxHLS">
             <div id = "HLSdemo">HLS demo</div>
             <div class = MainHlsBox> 
-                <video muted controls id = "Avideo">
+                <video muted controls height="100%" width="100%" id = "Avideo">
                     <script src = "HLSMediaPlayer1.js" ></script>
-                    <script src = "Syncronize.js"></script>
+                    
                     <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
                     <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese" default/>
                 </video>
+                <audio id = "audio"></audio>
             </div>
             <div class = "SideHlsBox">
                 <div class="SideHlsPlayer">
@@ -48,7 +49,13 @@
             </div>
 
             <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
-            <script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
+
+            <select name="select" id="select"> Audio
+                <option value="audio\Leo1080p_English_with_CC.mp3">English</option>
+                <option value="audio/4. Leo - Netflix - Vietnamese audio sound track.mp3">Vietnamese</option>
+            </select>
+            <script src = "Syncronize.js"></script>
         </div>
+        
     </body>
 </html>

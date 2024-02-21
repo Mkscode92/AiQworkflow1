@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     var HlsVideo = document.getElementById("Avideo");
+    
     var HlsVideoSrc = "assets/Master.m3u8";
     const defaultOptions = {};
 
@@ -7,6 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (Hls.isSupported()) {
         var hls = new Hls();
         hls.loadSource(HlsVideoSrc);
+
+        HlsVideo.controlsList = "noplaybackrate";
+        HlsVideo.disablePictureInPicture = true;
+
+
+        /*
         hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
             const availableQualities = hls.levels.map((l) => l.height)
 
@@ -25,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 'captions', 
                 'settings', 
                 'pip', 
-                'airplay', 
                 'fullscreen', 
             ];
 
@@ -40,10 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 }
             }
+
+            defaultOptions.Audio = {
+                options: ["English", "Vietnamese", "Spanish"]
+                
+            }
             
-            const plyr1 = new Plyr(HlsVideo, defaultOptions);
-            
-        });
+            //const plyr1 = new Plyr(HlsVideo, defaultOptions);
+        });*/
+
         hls.attachMedia(HlsVideo);
 
         updateHls(hls)
