@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     var HlsVideo = document.getElementById("Avideo");
-    var HlsVideoB = document.getElementById("BVideo");
     var HlsVideoSrc = "assets/Master.m3u8";
     const defaultOptions = {};
+
 
     if (Hls.isSupported()) {
         var hls = new Hls();

@@ -15,7 +15,7 @@
         <div class="MediaBoxHLS">
             <div id = "HLSdemo">HLS demo</div>
             <div class = MainHlsBox> 
-                <video controls id = "Avideo">
+                <video muted controls id = "Avideo">
                     <script src = "HLSMediaPlayer1.js" ></script>
                     <script src = "Syncronize.js"></script>
                     <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English" default/>
@@ -24,14 +24,14 @@
             </div>
             <div class = "SideHlsBox">
                 <div class="SideHlsPlayer">
-                   <video id = "Bvideo" height="100%" width="100%" [muted]="'muted'" >
+                   <video id = "Bvideo" height="100%" width="100%" muted >
                         <script src = "HLSMediaPlayer2.js"></script>
                         <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English"/>
                         <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese"/>
                     </video> 
                 </div>
                 <div class="SideHlsPlayer">
-                    <video id = "Cvideo" height="100%" width="100%" [muted]="'muted'" >
+                    <video id = "Cvideo" height="100%" width="100%" muted >
                          <script src = "HLSMediaPlayer3.js"></script>
                          <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese"/>
                          <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English"/>
@@ -39,7 +39,7 @@
                      </video> 
                  </div>
                  <div class="SideHlsPlayer">
-                    <video id = "Dvideo" height="100%" width="100%" [muted]="'muted'" >
+                    <video id = "Dvideo" height="100%" width="100%" muted >
                          <script src = "HLSMediaPlayer4.js"></script>
                          <track kind = "subtitles" src="assets/1. Leo - Netflix - Source English with CC.vtt" srclang="en" label="English"/>
                          <track kind = "subtitles" src="assets/6. Leo - Netflix - Vietnamese Sub.vtt" srclang="vt" label="Vietnamese"/>

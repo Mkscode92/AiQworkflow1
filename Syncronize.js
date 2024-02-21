@@ -11,12 +11,11 @@ MainVideo.addEventListener("play", function() {
     VideoB.play();
     VideoC.play();
     VideoD.play();
-    
 
-    
-    
-    
 
+    VideoB.volume = 0;
+    VideoC.volume = 0;
+    VideoD.volume = 0;
 })
 
 MainVideo.addEventListener("pause", function() {
