@@ -1,39 +1,43 @@
 var MainVideo = document.getElementById("Avideo");
-var VideoB = null;
-var VideoC = null;
-var VideoD = null;
-
-var audio = document.getElementById("audio")
-var audiosrc = null;
+var VideoB = document.getElementById("Bvideo");
+var VideoC = document.getElementById("Cvideo");
+var VideoD = document.getElementById("Dvideo");
 var select = document.getElementById("select");
 
 var EnglishTrack =  "audio/Leo1080p_English_with_CC.mp3"
 var VietnameseTrack = "audio/4. Leo - Netflix - Vietnamese audio sound track.mp3"
 
-audio.src = EnglishTrack;
-audio.volume = 0.4;
+var audio = new Howl({
+    src: EnglishTrack
+});
 
 select.addEventListener("change", function() {
-    audio.src = select.value; 
-    audio.play();
+    audio.unload();
+
+    audio = new Howl({
+        src: select.value
+    })
+
+    audio.play()
 })
 
 
 MainVideo.addEventListener("play", function() {
-    VideoB = document.getElementById("Bvideo");
-    VideoC = document.getElementById("Cvideo");
-    VideoD = document.getElementById("Dvideo");
+    var MT = MainVideo.currentTime;
+
     VideoB.play();
     VideoC.play();
     VideoD.play();
-
 
     VideoB.volume = 0;
     VideoC.volume = 0;
     VideoD.volume = 0;
 
-    audio.play();
+    audio.play()
 
+    if (Math.abs(audio.currentTime - MT) > 0.1) {
+        audio.currentTime = MT;
+    }
 })
 
 MainVideo.addEventListener("pause", function() {
@@ -62,8 +66,8 @@ MainVideo.addEventListener("timeupdate", async function() {
         VideoD.currentTime = MT;
     }
 
-    if (Math.abs(audio.currentTime - MT) > 0.1) {
-        audio.currentTime = MT;
+    if (Math.abs(audio.seek() - MT) > .2) {
+        audio.seek(MT);
     }
     
 })
