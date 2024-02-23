@@ -4,21 +4,26 @@ var VideoC = document.getElementById("Cvideo");
 var VideoD = document.getElementById("Dvideo");
 var select = document.getElementById("select");
 
-var EnglishTrack =  "audio/Leo1080p_English_with_CC.mp3"
-var VietnameseTrack = "audio/4. Leo - Netflix - Vietnamese audio sound track.mp3"
-var SpansihTrack = "audio/7. Leo - Netflix - Spanish audio sound track.wav"
+var EnglishSrc =  "audio/Leo1080p_English_with_CC.mp3"
+var VietnameseSrc = "audio/4. Leo - Netflix - Vietnamese audio sound track.mp3"
+var SpanishSrc = "audio/7. Leo - Netflix - Spanish audio sound track.wav"
 
-var audio = new Howl({
-    src: EnglishTrack
+var EnglishAudio = new Howl({
+    src: EnglishSrc
 });
+var SpanishAudio = new Howl({
+    src: SpanishSrc
+})
+var VietnameseAudio = new Howl({
+    src: VietnameseSrc
+})
+var audiolist = [EnglishAudio,SpanishAudio,VietnameseAudio]
+var audio = EnglishAudio
 
 select.addEventListener("change", function() {
-    audio.unload();
-
-    audio = new Howl({
-        src: select.value
-    })
-
+    audio.pause();
+    audio = audiolist[select.value]
+    
     audio.play();
 })
 
