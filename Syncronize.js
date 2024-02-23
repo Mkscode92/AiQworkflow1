@@ -12,6 +12,8 @@ var audio = new Howl({
 });
 
 select.addEventListener("change", function() {
+    
+
     audio.unload();
 
     audio = new Howl({
@@ -23,7 +25,6 @@ select.addEventListener("change", function() {
 
 
 MainVideo.addEventListener("play", function() {
-    var MT = MainVideo.currentTime;
 
     VideoB.play();
     VideoC.play();
@@ -34,10 +35,6 @@ MainVideo.addEventListener("play", function() {
     VideoD.volume = 0;
 
     audio.play()
-
-    if (Math.abs(audio.currentTime - MT) > 0.1) {
-        audio.currentTime = MT;
-    }
 })
 
 MainVideo.addEventListener("pause", function() {
@@ -49,26 +46,14 @@ MainVideo.addEventListener("pause", function() {
 })
 
 
-MainVideo.addEventListener("timeupdate", async function() {
+MainVideo.addEventListener("seeked", async function() {
     var MT = MainVideo.currentTime;
-
-    if (Math.abs(VideoB.currentTime - MT) > 0.1) {
-        VideoB.currentTime = MT;
-    }
-    if (Math.abs(VideoC.currentTime - MT) > 0.1) {
-        VideoC.currentTime = MT;
-    }
-    if (Math.abs(VideoD.currentTime - MT) > 0.1) {
-        VideoD.currentTime = MT;
-    }
-
-    if (Math.abs(VideoD.currentTime - MT) > 0.1) {
-        VideoD.currentTime = MT;
-    }
-
-    if (Math.abs(audio.seek() - MT) > .2) {
-        audio.seek(MT);
-    }
-
+    VideoB.currentTime = MT;
+    VideoC.currentTime = MT;
+    VideoD.currentTime = MT;
 })
 
+MainVideo.addEventListener("timeupdate",() => {
+    audio.seek(MainVideo.currentTime);
+
+})

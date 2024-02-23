@@ -1,13 +1,16 @@
+var HlsVideo = document.getElementById("Avideo");
+var Source;
+var hls;
+
+
 document.addEventListener("DOMContentLoaded", () => {
-    var HlsVideo = document.getElementById("Avideo");
-    
-    var HlsVideoSrc = "assets/Master.m3u8";
+    Source = "assets/Master.m3u8";
     const defaultOptions = {};
 
     try {
         if (Hls.isSupported()) {
-            var hls = new Hls();
-            hls.loadSource(HlsVideoSrc);
+            hls = new Hls();
+            hls.loadSource(Source);
     
             HlsVideo.controlsList = "noplaybackrate";
             HlsVideo.disablePictureInPicture = true;
