@@ -6,6 +6,7 @@ var select = document.getElementById("select");
 
 var EnglishTrack =  "audio/Leo1080p_English_with_CC.mp3"
 var VietnameseTrack = "audio/4. Leo - Netflix - Vietnamese audio sound track.mp3"
+var SpansihTrack = "audio/7. Leo - Netflix - Spanish audio sound track.wav"
 
 var audio = new Howl({
     src: EnglishTrack
