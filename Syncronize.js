@@ -52,14 +52,7 @@ MainVideo.addEventListener("seeked", async function() {
 })
 
 MainVideo.addEventListener("timeupdate",() => {
-    audio.seek(MainVideo.currentTime);
-
-})
-
-var tag = document.getElementById("debugger");
-MainVideo.addEventListener("waiting", function() {
-    tag.textContent = "waiting";
-})
-MainVideo.addEventListener("playing", function() {
-    tag.textContent = "playing";
+    if (Math.abs(MainVideo.currentTime - audio.seek())) {
+        audio.seek(MainVideo.currentTime);
+    }
 })
