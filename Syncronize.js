@@ -12,15 +12,13 @@ var audio = new Howl({
 });
 
 select.addEventListener("change", function() {
-    
-
     audio.unload();
 
     audio = new Howl({
         src: select.value
     })
 
-    audio.play()
+    audio.play();
 })
 
 
@@ -34,7 +32,7 @@ MainVideo.addEventListener("play", function() {
     VideoC.volume = 0;
     VideoD.volume = 0;
 
-    audio.play()
+    audio.play();
 })
 
 MainVideo.addEventListener("pause", function() {
