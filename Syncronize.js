@@ -4,7 +4,7 @@ var VideoC = document.getElementById("Cvideo");
 var VideoD = document.getElementById("Dvideo");
 var select = document.getElementById("select");
 
-var EnglishTrack =  "audio/Leo1080p_English_with_CC.mp3"
+var EnglishTrack =  "audio/Leo720p_English_with_CC.mp3"
 var VietnameseTrack = "audio/4. Leo - Netflix - Vietnamese audio sound track.mp3"
 
 var audio = new Howl({
@@ -50,25 +50,25 @@ MainVideo.addEventListener("pause", function() {
 
 
 MainVideo.addEventListener("timeupdate", async function() {
-    var MT = MainVideo.currentTime;
+    // var MT = MainVideo.currentTime;
 
-    if (Math.abs(VideoB.currentTime - MT) > 0.1) {
-        VideoB.currentTime = MT;
-    }
-    if (Math.abs(VideoC.currentTime - MT) > 0.1) {
-        VideoC.currentTime = MT;
-    }
-    if (Math.abs(VideoD.currentTime - MT) > 0.1) {
-        VideoD.currentTime = MT;
-    }
+    // if (Math.abs(VideoB.currentTime - MT) > 0.1) {
+    //     VideoB.currentTime = MT;
+    // }
+    // if (Math.abs(VideoC.currentTime - MT) > 0.1) {
+    //     VideoC.currentTime = MT;
+    // }
+    // if (Math.abs(VideoD.currentTime - MT) > 0.1) {
+    //     VideoD.currentTime = MT;
+    // }
 
-    if (Math.abs(VideoD.currentTime - MT) > 0.1) {
-        VideoD.currentTime = MT;
-    }
+    // if (Math.abs(VideoD.currentTime - MT) > 0.1) {
+    //     VideoD.currentTime = MT;
+    // }
 
-    if (Math.abs(audio.seek() - MT) > .2) {
-        audio.seek(MT);
-    }
+    // if (Math.abs(audio.seek() - MT) > .2) {
+    //     audio.seek(MT);
+    // }
     
 })
 
