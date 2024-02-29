@@ -1,15 +1,11 @@
-var HlsVideo = document.getElementById("Avideo");
-var Source;
-var hls;
-
-
 document.addEventListener("DOMContentLoaded", () => {
-    Source = "assets/Master.m3u8";
+    var HlsVideo = document.getElementById("Avideo");
+    var Source = "https://dfflvukqjg5l4.cloudfront.net/leo480p_no_audio.m3u8";
     const defaultOptions = {};
 
     try {
         if (Hls.isSupported()) {
-            hls = new Hls();
+            var hls = new Hls();
             hls.loadSource(Source);
     
             HlsVideo.controlsList = "noplaybackrate";
@@ -18,48 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
             hls.attachMedia(HlsVideo);
     
             updateHls(hls)
-    
-            /*
-            hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
-                const availableQualities = hls.levels.map((l) => l.height)
-    
-                defaultOptions.controls = 
-                [
-                    'play-large', 
-                    'restart', 
-                    'rewind', 
-                    'play', 
-                    'fast-forward', 
-                    'progress',
-                    'current-time', 
-                    'duration', 
-                    'mute', 
-                    'volume', 
-                    'captions', 
-                    'settings', 
-                    'pip', 
-                    'fullscreen', 
-                ];
-    
-         
-                defaultOptions.quality = {
-                    default: availableQualities[0],
-                    options: availableQualities,
-                    forced: true,
-                    onChange: (e) => {
-                        updateHls(hls)
-                        updateQuality(e);
-    
-                    }
-                }
-    
-                defaultOptions.Audio = {
-                    options: ["English", "Vietnamese", "Spanish"]
-                    
-                }
-                
-                //const plyr1 = new Plyr(HlsVideo, defaultOptions);
-            });*/
     
         }
     } catch (error) {
@@ -77,4 +31,52 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateHls(hls) {
         window.hls = hls
     }
+    
+    var audio = new Howl({
+        src: "https://dfflvukqjg5l4.cloudfront.net/Leo1080p_English_with_CC.mp3"
+    })
+
+    HlsVideo.addEventListener('play', function() {
+        if (HlsVideo.parentNode.id == "AScreenBox") {
+            audio.play();
+
+            VideoB.play();
+            VideoC.play();
+            VideoD.play();
+        }
+    })
+
+    HlsVideo.addEventListener('pause', function() {
+        if (HlsVideo.parentNode.id == "AScreenBox") {
+            audio.pause();
+
+            VideoB.pause();
+            VideoC.pause();
+            VideoD.pause();
+        }
+    })
+
+    HlsVideo.addEventListener("seeked", async function() {
+        if (HlsVideo.parentNode.id == "AScreenBox") {
+            var MT = HlsVideo.currentTime;
+            VideoB.currentTime = MT;
+            VideoC.currentTime = MT;
+            VideoD.currentTime = MT;
+        }
+    })
+    HlsVideo.addEventListener('timeupdate', function() {
+        if (HlsVideo.parentNode.id == "AScreenBox") {
+            audio.seek(HlsVideo.currentTime);
+        }
+    })
+    
+    
+
+    var observer = new MutationObserver(function(mutationsList, observer){
+        if (HlsVideo.parentNode.id !== "AScreenNode") {
+            audio.pause();
+        }
+    })
+
+    observer.observe(HlsVideo, { attributes: true, childList: true, subtree: true });
 })
