@@ -85,8 +85,10 @@ let accID = "6d8srH";
                     video.srcObject = mediaStream;
                     video.autoplay = true;
                     
-                    video.style.width = "49%";
-                    video.style.height = "75%";
+                    video.style.width = "69%";
+                    video.style.height = "90%";
+                    video.webkit-playsinline;
+                    video.playsinline = true;
 
                     video.style.position = "absolute";
 
@@ -95,16 +97,17 @@ let accID = "6d8srH";
                         MainMediaBox.appendChild(video);
                     } else if  (Sp1.children.length == 0 ) {
                         Sp1.appendChild(video);
+                        video.style.position = "relative";
                         video.style.width = "100%";
-                    video.style.height = "100%";
+                        video.style.height = "90%";
                     } else if  (Sp2.children.length == 0 ) {
                         Sp2.appendChild(video);
                         video.style.width = "100%";
-                    video.style.height = "100%";
+                        video.style.height = "100%";
                     } else if  (Sp1.children.length == 0 ) {
                         Sp3.appendChild(video);
                         video.style.width = "100%";
-                    video.style.height = "100%";
+                        video.style.height = "100%";
                     }
 
                 }
