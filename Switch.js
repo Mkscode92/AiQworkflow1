@@ -121,6 +121,8 @@ var CurrentAudio = AudioTable[0];
 
 SwitchAudio(0);
 
+var test
+
 function SwitchAudio(value) {
 
     var Tracks = MainVideo.getElementsByTagName('track');
