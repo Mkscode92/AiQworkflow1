@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.hls = hls
     }
     
+    /*
     var audio = new Howl({
         src: "https://dfflvukqjg5l4.cloudfront.net/Leo1080p_English_with_CC.mp3"
     })
@@ -79,4 +80,5 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     observer.observe(HlsVideo, { attributes: true, childList: true, subtree: true });
+    */
 })

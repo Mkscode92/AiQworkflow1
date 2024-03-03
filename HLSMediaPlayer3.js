@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.hls = hls
     }
 
+    /*
 
     var audio1 = new Howl({
         src: "https://dfflvukqjg5l4.cloudfront.net/4.%20Leo%20-%20Netflix%20-%20Vietnamese%20audio%20sound%20track.mp3",
@@ -78,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     observer.observe(HlsVideo, { attributes: true, childList: true, subtree: true });
+    */
 })
 
 

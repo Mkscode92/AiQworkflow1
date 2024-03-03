@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     
             HlsVideo.controlsList = "noplaybackrate";
             HlsVideo.disablePictureInPicture = true;
-    
-            console.log(HlsVideo)
 
             hls.attachMedia(HlsVideo);
     
@@ -36,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateHls(hls) {
         window.hls = hls
     }
+
+    /*
     var audio = new Howl({
         src: "https://dfflvukqjg5l4.cloudfront.net/4.%20Leo%20-%20Netflix%20-%20Vietnamese%20audio%20sound%20track.mp3"
     })
@@ -81,6 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     observer.observe(HlsVideo, { attributes: true, childList: true, subtree: true });
-    
+    */
 })
 

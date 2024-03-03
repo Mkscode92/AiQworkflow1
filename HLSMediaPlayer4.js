@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateHls(hls) {
         window.hls = hls
     }
+
+    /*
     var audio = new Howl({
         src: "https://dfflvukqjg5l4.cloudfront.net/7.%20Leo%20-%20Netflix%20-%20Spanish%20audio%20sound%20track.wav"
     })
@@ -69,5 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     observer.observe(HlsVideo, { attributes: true, childList: true, subtree: true });
+
+    */
 })
 
