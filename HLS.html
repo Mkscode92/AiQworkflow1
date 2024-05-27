@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>  
@@ -6,213 +5,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-     
+        <link rel="stylesheet" href="style.css">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
-
-
-        <style> 
-
-        .Header {
-            height: 10%;
-        }
-
-        body {
-            background-color: rgb(0, 0, 0);
-            background-repeat: no-repeat;
-            margin: 0;
-            height: 100vh;
-            
-        }
-
-        /* WebRTS */ 
-        .MediaBox {
-            background-color: black;
-            border-radius: 1%;
-            margin: 0%;
-            height: 100%;
-            padding-left: 2%;
-
-        }
-
-        #millicasttitle {
-            color: white;
-        }
-
-        .MainMediaBox {
-            background-color: rgb(0, 0, 0);
-            float: left;
-            width: 70%;
-            height: 90%;
-            display: flex;
-
-            border: 1px solid gray;
-        }
-
-        .MainMediaBox div {
-            color: rgb(233, 233, 233);
-            padding: 34%;
-
-        }
-
-        .SideMediaBox {
-            width: 28%;
-            height: 80%;
-            float: right;
-            margin-right: 1%;
-
-            
-        }
-
-        .SidePlayer {
-            background-color: rgb(0, 0, 0);
-            height: 37%;
-            margin-bottom: 1%;
-
-            border: 1px solid gray;
-        }
-
-
-
-        /* HLS ------------------------*/
-
-        .MediaBoxHLS {
-            background-color: black;
-            border-radius: 1%;
-            margin: 0%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .MainHlsBox {
-            background-color: rgb(0, 0, 0);
-            height: 60%;
-            width: 100%;
-            margin: 0% 15% 0% 0%;
-            float: left;
-            box-sizing: border-box;
-            
-
-            border: 1px solid gray;
-        }
-
-        .button {
-            height: 32%;
-            margin-top: 32%;
-        }
-
-
-        .SideHlsBox{
-            width: 25%;
-            height: 90%;
-    
-            display: inline-block;
-            
-        }
-
-        
-        .SideHlsPlayer{
-            background-color: rgb(0, 0, 0);
-            height: 28%;
-            width: 90%;
-            display: flex;
-            float: none;
-        } 
-
-        .SideHlsPlayer:hover {
-            background-color: rgb(121, 117, 117);
-        }
-
-        .GlowBox {
-            background-color: rgb(0, 0, 0);
-            padding: 0%;
-            width: 100%;
-            height: 100%;
-        }
-
-        .Label {
-            background-color: rgb(0, 0, 0);
-            color: gray; 
-            width: 90%; 
-            text-align: center;
-
-            border: 1px solid gray;
-            box-sizing: border-box;
-        }
-
-        .Purchase {
-            margin-top: 1%;
-            background-color: rgb(0, 0, 0);
-            font-weight: bold;
-            color: rgb(67, 193, 78);
-        }
-
-        .Purchase:hover {
-            background-color: rgb(45, 45, 45);
-        }
-
-        .select {
-            background-color: rgb(0, 0, 0);
-            color: white;
-        }
-
-        @supports (-webkit-touch-callout: none) {
-
-            .MainMediaBox {
-                height: 72%;
-            }
-
-            .SideHlsBox {
-                height: 80%;
-                margin-top: -7%;
-            }
-
-        }
-
-
-        #Avideo::-webkit-media-controls-volume-slider {
-        display:none;
-        }
-
-        #Avideo::-webkit-media-controls-mute-button {
-        display:none;
-        }
-
-        #Bvideo::-webkit-media-controls-volume-slider {
-        display:none;
-        }
-
-        #Bvideo::-webkit-media-controls-mute-button {
-        display:none;
-        }
-
-        #Cvideo::-webkit-media-controls-volume-slider {
-        display:none;
-        }
-
-        #Cvideo::-webkit-media-controls-mute-button {
-        display:none;
-        }
-        #Dvideo::-webkit-media-controls-volume-slider {
-        display:none;
-        }
-
-        #Dvideo::-webkit-media-controls-mute-button {
-        display:none;
-        }
-
-        #HLSdemo {
-            color:white;
-        }
-        </style>
         
     </head>
     <body> 
         <div class="MediaBoxHLS">
             <div id = "HLSdemo">HLS demo</div>
             <div style="background-color: rgb(51, 51, 51); color: red; width: 3%; text-align: right;">LiVE</div>
-            <div class = "Label" style="width: 100%;" >English</div>
+            <div class = "Label" style="width: 70%;" >English</div>
             <div class = MainHlsBox id = "AScreenBox"> 
                 <video class = "Screen" controls height="100%" width="100%" id = "Avideo" muted webkit-playsinline playsinline> 
                     <script src = "HLSMediaPlayer1.js" ></script>
@@ -228,6 +31,7 @@
             
 
             <div class = "SideHlsBox">
+            
                 <div class = "Label">English</div>
                 <button class="SideHlsPlayer">
                     <div class="GlowBox" id = "BScreenBox" >
@@ -240,9 +44,6 @@
                         
                     </div>
                 </button>
-            </div>
-
-            <div class = "SideHlsBox">
                 <div class = "Label">Vietnamese</div>
                 <button class="SideHlsPlayer" id = "CScreenBox">
                     <div class="GlowBox" id = "CScreenBox">
@@ -254,9 +55,7 @@
                         </video> 
                     </div>
                 </button>
-            </div>
                 
-            <div class = "SideHlsBox">
                 <div class = "Label">Español</div>
                 
                 <button class="SideHlsPlayer" id = "DScreenBox">
@@ -270,7 +69,6 @@
                     </div>
                 </button>
             </div>
-
 
             <button class="Purchase"> BUY</button>
             <select id="select">
